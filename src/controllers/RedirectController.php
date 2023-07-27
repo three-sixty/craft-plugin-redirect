@@ -86,7 +86,7 @@ class RedirectController extends Controller
             $destinationUrl = UrlHelper::baseUrl() . ltrim($destinationUrl, '/');
         }
 
-        $destinationUrl .= "?" . $this->request->getQueryStringWithoutPath();
+        $destinationUrl .= rtrim('?' . $this->request->getQueryStringWithoutPath(), '?');
 
         // register the hit to the database
         if ($redirectId != null && $statusCode != 404) {
